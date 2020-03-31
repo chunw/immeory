@@ -218,7 +218,40 @@
 
   function showArtwork(event) {
     var imgClicked = event.target.src;
-    console.log(imgClicked);
+
+		// Button becomes cross.
+		DOM.infoCtrl.classList.add('btn--active');
+
+		// Animate info text and overlay.
+		anime.remove([DOM.infoOverlay, DOM.infoText]);
+		var animeInfoOpts = {
+			targets: [DOM.infoOverlay, DOM.infoText],
+			duration: 1500,
+			delay: function(t,i) {
+				return !i ? 0 : 150;
+			},
+			easing: [0.25,0.1,0.25,1],
+			opacity: [0,1],
+			translateY: function(t,i) {
+				return !i ? 0 : [30,0];
+			},
+			begin: function() {
+        DOM.infoOverlay.removeChild(DOM.infoOverlay.lastChild);
+				DOM.infoOverlay.classList.add('overlay--active');
+        DOM.infoOverlay.classList.add('overlay--dark');
+        DOM.infoOverlay.appendChild(createIframeFromImg(imgClicked));
+			}
+		};
+		anime(animeInfoOpts);
+	}
+
+  function createIframeFromImg(img) {
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute('id', img);
+    iframe.setAttribute('width', '100%');
+    iframe.setAttribute('height', '100%');
+    iframe.setAttribute('src', 'iframe/room1/uschina.html');
+    return iframe;
   }
 
 	function applyRoomTransform(transform) {
