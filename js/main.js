@@ -7,6 +7,8 @@
  *
  * Copyright 2017, Codrops
  * http://www.codrops.com
+ *
+ * Modified by Chun Wang (chunwang.me@gmail.com) in March 2020.
  */
 ;(function(window) {
 
@@ -71,6 +73,9 @@
 	DOM.menuOverlay = DOM.content.querySelector('.overlay--menu');
 	// The menu items
 	DOM.menuItems = DOM.menuOverlay.querySelectorAll('.menu > .menu__item');
+  DOM.menuItemExhbition =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__exhibition');
+  DOM.menuItemAbout =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__about');
+
 	// The info button.
 	DOM.infoCtrl = DOM.content.querySelector('.btn--info');
 	// The info overlay.
@@ -205,6 +210,8 @@
 
 		// Menu click.
 		DOM.menuCtrl.addEventListener('click', toggleMenu);
+    DOM.menuItemExhbition.addEventListener('click', toggleMenu);
+    DOM.menuItemAbout.addEventListener('click', onAboutClick);
 
 		// Info click.
 		DOM.infoCtrl.addEventListener('click', toggleInfo);
@@ -216,11 +223,22 @@
     });
 	}
 
+  function onAboutClick() {
+    toggleMenu();
+    showInfo();
+  }
+
   function showArtwork(event) {
     var imgClicked = event.target.src;
 
 		// Button becomes cross.
 		DOM.infoCtrl.classList.add('btn--active');
+
+    // Clean up space.
+    var iframe = DOM.infoOverlay.querySelector('iframe');
+    if (iframe) {
+      DOM.infoOverlay.removeChild(iframe);
+    }
 
 		// Animate info text and overlay.
 		anime.remove([DOM.infoOverlay, DOM.infoText]);
@@ -236,7 +254,6 @@
 				return !i ? 0 : [30,0];
 			},
 			begin: function() {
-        DOM.infoOverlay.removeChild(DOM.infoOverlay.lastChild);
 				DOM.infoOverlay.classList.add('overlay--active');
         DOM.infoOverlay.classList.add('overlay--dark');
         DOM.infoOverlay.appendChild(createIframeFromImg(imgClicked));
@@ -246,12 +263,20 @@
 	}
 
   function createIframeFromImg(img) {
-    var iframe = document.createElement('iframe');
-    iframe.setAttribute('id', img);
+    var iframe = document.createElement('iframe'),
+    filePaths = img.split(".")[0].split("/"),
+    iframeSrc = 'iframe/' + filePaths[filePaths.length-2] + '/' + filePaths[filePaths.length-1] + '.html';
     iframe.setAttribute('width', '100%');
     iframe.setAttribute('height', '100%');
-    iframe.setAttribute('src', 'iframe/room1/uschina.html');
+    iframe.setAttribute('src', iframeSrc);
     return iframe;
+  }
+
+  function createInfoOverlayFromText(text) {
+    var p = document.createElement('p');
+    p.classList.add('info');
+    p.innerHTML = text;
+    DOM.infoOverlay.appendChild(p);
   }
 
 	function applyRoomTransform(transform) {
@@ -501,7 +526,10 @@
 			closeInfo();
 		}
 		else {
-			// Open it.
+      // Only need to show text
+      DOM.infoOverlay.removeChild(DOM.infoOverlay.querySelector('iframe'));
+
+      // Open it.
 			showInfo();
 		}
 	}
@@ -509,6 +537,7 @@
 	function showInfo() {
 		// Button becomes cross.
 		DOM.infoCtrl.classList.add('btn--active');
+
 		// Remove tilt.
 		removeTilt();
 		// Hide current slide.
