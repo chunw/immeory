@@ -527,7 +527,10 @@
 		}
 		else {
       // Only need to show text
-      DOM.infoOverlay.removeChild(DOM.infoOverlay.querySelector('iframe'));
+      var iframe = DOM.infoOverlay.querySelector('iframe');
+      if (iframe) {
+          DOM.infoOverlay.removeChild(iframe);
+      }
 
       // Open it.
 			showInfo();
