@@ -2,22 +2,58 @@
 .iframe {
   font-family: 'Barlow', sans-serif;
   color: white;
+  background: black;
 }
+
 .iframe img {
-  width: 80vw;
+  width: 80%;
 }
+
 .iframe .intro {
   line-height: 1.5;
   font-size: 0.9em;
-  margin-left: 12px;
+  margin-left: 1vw;
 }
+
 .iframe .intro .title {
   font-weight: bold;
   font-size: 1.8em;
 }
-.iframe .intro .name {
+
+.iframe .intro .name, .iframe .intro .media {
   padding: 6px 0;
 }
+
 .iframe a {
   color: white;
+  text-decoration: underline;
+}
+
+.col {
+  background: black;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  margin-top: 20px;
+}
+
+.col.left {
+  left: 0;
+  overflow-y: scroll;
+  width: 40%;
+}
+
+.col.left .info {
+  line-height: 1.5;
+	width: 100%;
+	font-family: var(--font-text);
+}
+
+.col.right {
+  right: 0;
+  width: 60%;
+  padding-left: 12px;
+  border-left: 1px solid grey;
 }

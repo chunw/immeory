@@ -6,7 +6,6 @@
  * http://www.opensource.org/licenses/mit-license.php
  *
  * Copyright 2017, Codrops
- * http://www.codrops.com
  *
  * Modified by Chun Wang (chunwang.me@gmail.com) in March 2020.
  */
@@ -75,6 +74,7 @@
 	DOM.menuItems = DOM.menuOverlay.querySelectorAll('.menu > .menu__item');
   DOM.menuItemExhbition =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__exhibition');
   DOM.menuItemAbout =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__about');
+  DOM.menuItemOpencall =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__opencall');
 
 	// The info button.
 	DOM.infoCtrl = DOM.content.querySelector('.btn--info');
@@ -212,6 +212,7 @@
 		DOM.menuCtrl.addEventListener('click', toggleMenu);
     DOM.menuItemExhbition.addEventListener('click', toggleMenu);
     DOM.menuItemAbout.addEventListener('click', onAboutClick);
+    DOM.menuItemOpencall.addEventListener('click', toggleOpencall);
 
 		// Info click.
 		DOM.infoCtrl.addEventListener('click', toggleInfo);
@@ -229,6 +230,9 @@
   }
 
   function showArtwork(event) {
+    DOM.infoOverlay.querySelector('p').classList.remove('visible');
+    DOM.infoOverlay.querySelector('p').classList.add('invisible');
+
     var imgClicked = event.target.src;
 
 		// Button becomes cross.
@@ -268,6 +272,7 @@
     iframeSrc = 'iframe/' + filePaths[filePaths.length-2] + '/' + filePaths[filePaths.length-1] + '.html';
     iframe.setAttribute('width', '100%');
     iframe.setAttribute('height', '100%');
+    iframe.setAttribute('frameBorder', '0');
     iframe.setAttribute('src', iframeSrc);
     return iframe;
   }
@@ -489,6 +494,22 @@
 		});
 	}
 
+
+  function toggleOpencall() {
+    if( /*isMoving ||*/ isNavigating ) {
+			return false;
+		}
+		if( DOM.menuCtrl.classList.contains('btn--active') ) {
+			// Close it.
+			closeInfo();
+		}
+		else {
+			// Open it.
+			showInfo();
+		}
+  }
+
+
 	function addAdjacentRooms() {
 		// Current room.
 		var room = DOM.rooms[currentRoom],
@@ -531,6 +552,8 @@
       if (iframe) {
           DOM.infoOverlay.removeChild(iframe);
       }
+      DOM.infoOverlay.querySelector('p').classList.remove('invisible');
+      DOM.infoOverlay.querySelector('p').classList.add('visible');
 
       // Open it.
 			showInfo();
