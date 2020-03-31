@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,700');
+.iframe {
+  font-family: 'Barlow', sans-serif;
+  color: white;
+}
+.iframe img {
+  width: 80vw;
+}
+.iframe .intro {
+  line-height: 1.5;
+  font-size: 0.9em;
+  margin-left: 12px;
+}
+.iframe .intro .title {
+  font-weight: bold;
+  font-size: 1.8em;
+}
+.iframe .intro .name {
+  padding: 6px 0;
+}
+.iframe a {
+  color: white;
+}
