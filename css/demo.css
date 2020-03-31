@@ -196,6 +196,7 @@ a:focus {
 
 /* Content */
 .content {
+	/*
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -204,12 +205,23 @@ a:focus {
 	width: 100%;
 	height: 100vh;
 	padding: 2vw;
+	*/
 }
 
 /* Header */
 .codrops-header {
+	position: absolute;
+	width: 100%;
+	flex-direction: column;
+	display: flex;
+	top: 0;
+	left: 0;
+}
+
+.codrops-header .wrapper {
 	display: flex;
 	align-items: center;
+	padding: 3vw;
 }
 
 .codrops-header__title {
@@ -340,11 +352,20 @@ a:focus {
 
 /* Nav */
 .nav {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.nav .wrapper {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	margin: auto 0 0 0;
 	pointer-events: none;
+	padding: 2vw;
+}
+.nav .btn--nav {
+	font-size: 1.2em;
 }
 
 /* Overlay with menu */

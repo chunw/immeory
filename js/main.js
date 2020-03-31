@@ -60,8 +60,8 @@
 	DOM.content = document.querySelector('.content');
 	// Rooms navigation controls.
 	DOM.nav = {
-		leftCtrl : DOM.content.querySelector('nav > .btn--nav-left'),
-		rightCtrl : DOM.content.querySelector('nav > .btn--nav-right')
+		leftCtrl : DOM.content.querySelector('nav > .wrapper > .btn--nav-left'),
+		rightCtrl : DOM.content.querySelector('nav > .wrapper > .btn--nav-right')
 	};
 	// Content slides.
 	DOM.slides = [].slice.call(DOM.content.querySelectorAll('.slides > .slide'));
@@ -208,7 +208,18 @@
 
 		// Info click.
 		DOM.infoCtrl.addEventListener('click', toggleInfo);
+
+    // Artwork Image click.
+    var photos = DOM.rooms[currentRoom].querySelectorAll('.room__img');
+    photos.forEach(photo => {
+        photo.addEventListener('click', showArtwork);
+    });
 	}
+
+  function showArtwork(event) {
+    var imgClicked = event.target.src;
+    console.log(imgClicked);
+  }
 
 	function applyRoomTransform(transform) {
 		DOM.scroller.style.transform = 'translate3d(' + transform.translateX + ', ' + transform.translateY + ', ' + transform.translateZ + ') ' +
@@ -260,7 +271,7 @@
 	}
 
 	function showSlide(delay) {
-		toggleSlide('in', delay);
+		//toggleSlide('in', delay);
 	}
 
 	function hideSlide(delay) {
