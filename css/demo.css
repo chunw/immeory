@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+
 *,
 *::after,
 *::before {
@@ -6,9 +8,11 @@
 }
 
 body {
-	font-family: 'Josefin Sans', sans-serif;
+	--color-subject-text: #c2292e; /*#1920f3;*/
+	--font-text: 'Roboto Mono', monospace; /*'Josefin Sans', sans-serif;*/
+	font-family: var(--font-text);
 	letter-spacing: 0.1em;
-	color: #1f1f21;
+	color: *#1f1f21;
 	background: #cecece;
 	height: 100vh;
 	overflow: hidden;
@@ -188,10 +192,11 @@ a:focus {
 .room__img {
 	flex: none;
 	max-width: 40%;
-    max-height: 60%;
+  max-height: 60%;
 	margin: 0 5%;
 	transform: translate3d(0,0,10px);
 	backface-visibility: hidden;
+	cursor: pointer;
 }
 
 /* Content */
@@ -221,11 +226,11 @@ a:focus {
 .codrops-header .wrapper {
 	display: flex;
 	align-items: center;
-	padding: 3vw;
+	padding: 2vw;
 }
 
 .codrops-header__title {
-	font-size: 1.165em;
+	font-size: 0.9em;
 	font-weight: normal;
 	margin: 0.5em 0 0 0;
 }
@@ -263,7 +268,7 @@ a:focus {
 .subject {
 	font-size: 1.5em;
 	margin: 0 auto;
-	color: #c2292e;
+	color: var(--color-subject-text);
 }
 
 /* Location */
@@ -389,7 +394,7 @@ a:focus {
 }
 
 .overlay--info {
-	background: rgba(23,94,236,0.4);
+	background: rgba(0, 0, 0, 0.4); /*rgba(23,94,236,0.4);*/
 }
 
 .overlay--menu {
