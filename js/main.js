@@ -268,8 +268,9 @@
 
   function createIframeFromImg(img) {
     var iframe = document.createElement('iframe'),
-    filePaths = img.split(".")[0].split("/"),
-    iframeSrc = '../../iframe/' + filePaths[filePaths.length-2] + '/' + filePaths[filePaths.length-1] + '.html';
+    splits = img.split("."),
+    filePaths = splits[splits.length-2].split("/"),
+    iframeSrc = 'iframe/' + filePaths[filePaths.length-2] + '/' + filePaths[filePaths.length-1] + '.html';
     iframe.setAttribute('width', '100%');
     iframe.setAttribute('height', '100%');
     iframe.setAttribute('frameBorder', '0');
