@@ -304,7 +304,7 @@ a:focus {
 .page-header__title {
 	font-size: 0.9em;
 	font-weight: normal;
-	margin: 0.5em 0 0 0;
+	font-family: var(--font-subtext);
 }
 
 /* Top Navigation Style */
@@ -466,7 +466,7 @@ a:focus {
 }
 
 .overlay--info {
-	background: rgba(0, 0, 0, 0.75); /*rgba(23,94,236,0.4);*/
+	background: rgba(0, 0, 0, 0.75);
 }
 
 .overlay--active.overlay--dark {
@@ -484,6 +484,8 @@ a:focus {
 }
 
 .menu {
+	font-weight: bold;
+	font-family: var(--font-subtext);
 	margin: 0;
 	padding: 0;
 	list-style: none;
