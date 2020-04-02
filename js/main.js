@@ -577,6 +577,8 @@
 		// Button becomes cross.
 		DOM.infoCtrl.classList.add('btn--active');
 
+    // Clean up.
+    DOM.infoOverlay.classList.remove('overlay--dark');
     DOM.infoOverlay.querySelectorAll('.inline').forEach(p => {
       p.classList.add('visible');
       p.classList.remove('invisible');

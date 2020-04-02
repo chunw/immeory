@@ -59,15 +59,19 @@
   padding-left: 12px;
   border-left: 1px solid grey;
 }
+.iframe.typewriter {
+  background: black; /* var(--color-subject-text); */
+  color: white;
+}
 .typewriter {
-    margin-top: 8vw;
+    margin-top: 2vw;
     margin-left: 2vw;
     margin-right: 2vw;
 }
 .typewriter h1 {
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid var(--color-subject-text); /* The typwriter cursor */
+  /* border-right: .15em solid var(--color-subject-text); The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
