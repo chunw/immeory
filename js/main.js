@@ -76,6 +76,10 @@
   DOM.menuItemAbout =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__about');
   DOM.menuItemOpencall =	DOM.menuOverlay.querySelector('.menu > .menu__item > .menu__item__opencall');
 
+  // Open call link
+  DOM.opencallHandle =	DOM.content.querySelector('a.opencall--handle');
+  DOM.opencallContent =	DOM.content.querySelector('.opencall.contact');
+
 	// The info button.
 	DOM.infoCtrl = DOM.content.querySelector('.btn--info');
 	// The info overlay.
@@ -212,7 +216,7 @@
 		DOM.menuCtrl.addEventListener('click', toggleMenu);
     DOM.menuItemExhbition.addEventListener('click', toggleMenu);
     DOM.menuItemAbout.addEventListener('click', onAboutClick);
-    DOM.menuItemOpencall.addEventListener('click', toggleOpencall);
+
 
 		// Info click.
 		DOM.infoCtrl.addEventListener('click', toggleInfo);
@@ -229,9 +233,33 @@
     showInfo();
   }
 
+  function onOpencallHandleClick() {
+    // Animate text.
+		anime.remove([DOM.opencallContent]);
+		var animeInfoOpts = {
+			targets: [DOM.opencallContent],
+			duration: 1500,
+			delay: function(t,i) {
+				return !i ? 0 : 150;
+			},
+			easing: [0.25,0.1,0.25,1],
+			opacity: [0,1],
+			translateY: function(t,i) {
+				return !i ? 0 : [30,0];
+			},
+			begin: function() {
+        DOM.opencallContent.classList.remove('invisible');
+        DOM.opencallContent.classList.add('visible');
+			}
+		};
+		anime(animeInfoOpts);
+  }
+
   function showArtwork(event) {
-    DOM.infoOverlay.querySelector('p').classList.remove('visible');
-    DOM.infoOverlay.querySelector('p').classList.add('invisible');
+    DOM.infoOverlay.querySelectorAll('.inline').forEach(p => {
+      p.classList.remove('visible');
+      p.classList.add('invisible');
+    });
 
     var imgClicked = event.target.src;
 
@@ -335,7 +363,7 @@
 	}
 
 	function showSlide(delay) {
-		//toggleSlide('in', delay);
+		toggleSlide('in', delay);
 	}
 
 	function hideSlide(delay) {
@@ -495,22 +523,6 @@
 		});
 	}
 
-
-  function toggleOpencall() {
-    if( /*isMoving ||*/ isNavigating ) {
-			return false;
-		}
-		if( DOM.menuCtrl.classList.contains('btn--active') ) {
-			// Close it.
-			closeInfo();
-		}
-		else {
-			// Open it.
-			showInfo();
-		}
-  }
-
-
 	function addAdjacentRooms() {
 		// Current room.
 		var room = DOM.rooms[currentRoom],
@@ -564,6 +576,11 @@
 	function showInfo() {
 		// Button becomes cross.
 		DOM.infoCtrl.classList.add('btn--active');
+
+    DOM.infoOverlay.querySelectorAll('.inline').forEach(p => {
+      p.classList.add('visible');
+      p.classList.remove('invisible');
+    });
 
 		// Remove tilt.
 		removeTilt();

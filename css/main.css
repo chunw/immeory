@@ -20,6 +20,7 @@ body {
 	--color-subject-text: #c2292e;
 	--font-title: 'Bungee', sans-serif;
 	--font-text: 'Roboto Mono', monospace;
+	--font-subtext: 'Barlow', sans-serif;
 	font-family: var(--font-text);
 	letter-spacing: 0.1em;
 	color: *#1f1f21;
@@ -30,6 +31,7 @@ body {
 
 .opencall.intro {
 	font-size: 1.2em;
+	padding-left: 4vw;
 }
 
 .opencall.contact {
@@ -37,18 +39,33 @@ body {
 	font-size: 0.9em;
 }
 
-.opencall.contact a {
+.opencall a {
+	cursor: pointer;
 	color: var(--color-subject-text);
 	text-decoration: underline;
 }
 
-.opencall.contact .hashtag {
+.opencall a.bold {
+	font-size: 1.2em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.opencall .hashtag {
 	font-weight: bold;
 	color: var(--color-subject-text);
 }
 
+.opencall.contact p {
+	padding-left: 30%;
+	padding-right: 40%;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
 .inline {
 	display: inline;
+	width: 50%;
 }
 
 .invisible {
@@ -368,10 +385,10 @@ a:focus {
 }
 
 .slide__name {
-	font-size: 15vw;
+	font-size: 2vw;
 	line-height: 0.8;
 	margin: 0;
-	padding: 0 0 0 5vw;
+	padding: 0 0 0 6vw;
 	text-indent: -5vw;
 	letter-spacing: -0.05em;
 	text-transform: lowercase;
