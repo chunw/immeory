@@ -72,6 +72,10 @@ body {
 	display: none;
 }
 
+.width100 {
+	width: 100%;
+}
+
 .visible {
 	display: block;
 }
