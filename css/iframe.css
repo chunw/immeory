@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow:400,700');
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 .iframe {
+  --color-subject-text: #c2292e;
   font-family: 'Barlow', sans-serif;
   color: white;
   background: black;
@@ -29,6 +30,22 @@
 .iframe a {
   color: white;
   text-decoration: underline;
+}
+
+.iframe .link {
+    margin: 40px 0 0 26px;
+}
+
+.iframe .link a {
+    cursor: pointer;
+    color: var(--color-subject-text);
+    animation-name: text-fade-in;
+    animation-duration: 10s;
+}
+
+@keyframes text-fade-in {
+  from {opacity: 0;}
+  to {opacity: 100%;}
 }
 
 .col {
