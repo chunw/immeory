@@ -214,18 +214,19 @@
 
 		// Menu click.
 		DOM.menuCtrl.addEventListener('click', toggleMenu);
-    DOM.menuItemExhbition.addEventListener('click', toggleMenu);
-    DOM.menuItemAbout.addEventListener('click', onAboutClick);
-
+        DOM.menuItemExhbition.addEventListener('click', toggleMenu);
+        DOM.menuItemAbout.addEventListener('click', onAboutClick);
 
 		// Info click.
 		DOM.infoCtrl.addEventListener('click', toggleInfo);
 
-    // Artwork Image click.
-    var photos = DOM.rooms[currentRoom].querySelectorAll('.room__img');
-    photos.forEach(photo => {
-        photo.addEventListener('click', showArtwork);
-    });
+        // Artwork Image click.
+        DOM.rooms.forEach(room => {
+            room.querySelectorAll('.room__img').forEach(photo => {
+                photo.addEventListener('click', showArtwork);
+            });
+        });
+
 	}
 
   function onAboutClick() {
