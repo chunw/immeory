@@ -120,7 +120,6 @@ a:focus {
     margin: 0 auto;
     fill: currentColor;
 }
-
 .btn {
     position: relative;
     margin: 0;
@@ -166,7 +165,7 @@ a:focus {
 
 .btn--toggle.btn--active {
     z-index: 100;
-    color: #fff;
+    color: grey;
 }
 
 .btn--toggle.btn--active:hover {
