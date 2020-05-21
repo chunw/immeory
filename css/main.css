@@ -65,10 +65,9 @@ body {
 }
 .opencall.contact p.credit {
     font-size: 0.8em;
-    text-align: right;
-    padding-right: 0;
-    padding-top: 1em;
-    opacity: 0.8;
+    position: absolute;
+    right: 2vw;
+    bottom: 1vw;
 }
 .inline {
     display: inline;
