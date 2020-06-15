@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body class="iframe typewriter" style="font-family:'Roboto Mono', monospace; background: black; color: white">
+
+<h1>Typewriter</h1>
+
+<button onclick="typeWriter()">Click me</button>
+
+<p id="demo" style="width: 400px; font-weight: bold; line-height: 1.5; padding: 10vw;"></p>
+
+<script>
+var i = 0;
+var txt = "Feelings in the pandemic can be: disrupted, insecure, upended, disoriented, restricted, deprived, groundless, afloat, overwhelmed, worried, furious, depressed, traumatic. While we are all constantly moving between hopes and despairs, do remember it is normal that our emotional weather experiences stormy days, and we’ll just have to ride it out.";
+var speed = 100;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
+
+</body>
+</html>

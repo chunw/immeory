@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html style="background-image:none">
+  <head lang="en">
+      <meta charset="UTF-8">
+      <title>Re.fuse</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+      <script src="static/javascript/jquery-3.2.1.min.js"></script>
+      <script src="static/javascript/printer.js"></script>
+      <script src="static/javascript/app.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+      <link rel=stylesheet type=text/css href="static/css/main.css">
+      <link rel=stylesheet type=text/css href="static/css/printer.css">
+      <style>
+            html {background-color: #0000008c;}
+          .large {
+            font-size: 3em;
+            font-weight: bold;
+            line-height: 0.9;
+          }
+          .small { line-height: 1; font-weight: bold; color:rgba(158, 158, 158, 0.31)}
+      </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="paper scrollprinter" style="background-color:rgb(14, 14, 14);">
+        <div class="content" style="color:rgb(64,64,64); background-color:rgb(14, 14, 14);">
+          <header style="border-bottom: solid 1px #272727">
+            <p class="date" id="date"></p>
+            <p class="timestamp">Printed at <span id="time"></span></p>
+          </header>
+          <div class="explanation">
+            <div id="prompt"  style="text-align: left; font-size: 24px; color:rgb(29, 28, 28);" >
+                <div class="text">
+                    <div class="large">
+                        8 MINUTES<br>
+                        AND<br>
+                        46<br>
+                        SECONDS.<br><br>
+                    </div>
+
+                    <div class="small">
+                        (If we go back to the "normal",
+                        we will have lost the lesson.)<br>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
